@@ -22,6 +22,15 @@ public class OrganicDog extends Dog implements OrganicMethods {
 			hunger += 50;
 		}
 	}
+	@Override
+	public void walkDogs() {
+		if (happiness <= 75) {
+			happiness += 25;
+		}
+		if ( waste>=15) {
+			waste-=15;
+		}
+	}
 
 	public void cleanCage() {
 		waste = 0;
@@ -33,6 +42,29 @@ public class OrganicDog extends Dog implements OrganicMethods {
 
 	public int getWaste() {
 		return waste;
+	}
+	@Override
+	public void tick() {
+		selfCare = random.nextInt(15) + 1;
+
+		if (selfCare == 5) {
+			System.out.println("Good news! Someone adopted all of the pets in the shelter!");
+			System.exit(0);
+		}
+		if (health >= 10) {
+			health -= 10;
+		}
+		if (happiness>= 10) {
+			happiness -= 10;
+		}
+		if (waste<=90) {
+			waste+=10;
+		}
+
+	}
+	@Override
+	public String toString() {
+		return super.toString() + this.hunger + "\t|" + this.waste;
 	}
 
 }

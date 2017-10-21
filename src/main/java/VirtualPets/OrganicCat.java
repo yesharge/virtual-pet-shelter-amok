@@ -36,5 +36,9 @@ public class OrganicCat extends VirtualPet implements OrganicMethods {
 	public int getWaste() {
 		return waste;
 	}
+	@Override
+	public String toString() {
+		return super.toString() + this.hunger + "\t|" + this.waste;
+	}
 
 }

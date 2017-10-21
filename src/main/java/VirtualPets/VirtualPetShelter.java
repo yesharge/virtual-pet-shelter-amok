@@ -14,20 +14,9 @@ public class VirtualPetShelter {
 		return pets.values();
 	}
 
-	public void addOrganicDog(OrganicDog pet) {
+	public void addHomelessPet(VirtualPet pet) {
 		pets.put(pet.getName(), pet);
-	}
 
-	public void addOrganicCat(OrganicCat pet) {
-		pets.put(pet.getName(), pet);
-	}
-
-	public void addRoboticCat(RoboticCat pet) {
-		pets.put(pet.getName(), pet);
-	}
-
-	public void addRoboticDog(RoboticDog pet) {
-		pets.put(pet.getName(), pet);
 	}
 
 	public VirtualPet getAspecificPet(String name) {
@@ -70,11 +59,23 @@ public class VirtualPetShelter {
 	}
 
 	public void displayPetTitle() {
-		System.out.println("This is the status of your pets:");
-		System.out.println("Name\t|Hunger\t|Bored\t|Thirst\t|Tiredness");
-		System.out.println("-------\t-------\t-------\t-------\t-----------");
+		System.out.println();
+		System.out.println("This is the status of your Organic pets:");
+		System.out.println("Name\t|Happy\t|health\t|Hunger\t|Waste");
+		System.out.println("-------\t-------\t-------\t-------\t-------");
 		for (VirtualPet pet : pets.values()) {
-			System.out.println(pet);
+			if (pet instanceof OrganicMethods) {
+				System.out.println(pet);
+			}
+		}
+		System.out.println();
+		System.out.println("This is the status of your Robotic pets:");
+		System.out.println("Name\t|Happy\t|health\t|Oil Level");
+		System.out.println("-------\t-------\t-------\t----------");
+		for (VirtualPet pet : pets.values()) {
+			if (pet instanceof RoboticMethods) {
+				System.out.println(pet);
+			}
 		}
 
 	}
@@ -133,6 +134,14 @@ public class VirtualPetShelter {
 		for (VirtualPet pet : pets.values()) {
 			if (pet instanceof OrganicDog) {
 				((OrganicDog) pet).cleanCage();
+			}
+		}
+	}
+
+	public void walkAllDogs() {
+		for (VirtualPet pet : pets.values()) {
+			if (pet instanceof Dog) {
+				((Dog) pet).walkDogs();
 			}
 		}
 	}

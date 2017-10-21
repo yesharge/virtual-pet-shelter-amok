@@ -74,7 +74,7 @@ public class VirtualPet {
 
 	@Override
 	public String toString() {
-		return "" + this.name + "\t|" + this.happiness + "\t|" + this.health;
+		return "" + this.name + "\t|" + this.happiness + "\t|" + this.health+"\t|";
 	}
 
 }

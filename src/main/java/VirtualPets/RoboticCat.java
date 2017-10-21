@@ -25,5 +25,8 @@ public class RoboticCat extends VirtualPet implements RoboticMethods {
 	public int getOilLevel() {
 		return oilLevel;
 	}
-
+	@Override
+	public String toString() {
+		return super.toString() + this.oilLevel;
+	}
 }
