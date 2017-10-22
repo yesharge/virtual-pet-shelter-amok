@@ -11,7 +11,7 @@ public class Dog extends VirtualPet {
 	}
 
 	public void walkDogs() {
-		if (happiness <=75) {
+		if (happiness <= 75) {
 			happiness += 25;
 		}
 	}

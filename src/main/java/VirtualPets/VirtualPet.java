@@ -40,7 +40,7 @@ public class VirtualPet {
 
 	public void playWithMe() {
 		if (happiness <= 55) {
-			happiness+= 45;
+			happiness += 45;
 		}
 	}
 
@@ -54,7 +54,7 @@ public class VirtualPet {
 		if (health >= 10) {
 			health -= 10;
 		}
-		if (happiness>= 10) {
+		if (happiness >= 10) {
 			happiness -= 10;
 		}
 
@@ -74,7 +74,7 @@ public class VirtualPet {
 
 	@Override
 	public String toString() {
-		return "" + this.name + "\t|" + this.happiness + "\t|" + this.health+"\t|";
+		return "" + this.name + "\t|" + this.happiness + "\t|" + this.health + "\t|";
 	}
 
 }

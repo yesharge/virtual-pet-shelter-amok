@@ -1,5 +1,5 @@
 The virtual pet shelter will house homeless organic and robotic animals and will begin with a random level for each mood/instance variable.
-0 indicates that the pet needs immediate attention, 100 indicates the pet is satisfied.
+0 indicates that the pet needs immediate attention, 100 indicates the pet is satisfied. Waste is the only instance in which 100 indicates the pet needs immediate attention and the 0 indicates that the pet is satisfied.
 Points will not be added if a pet's level will surpass 100 or dip below 0.
 
 
@@ -8,8 +8,8 @@ Methods:
 	-all organic pets' hunger is increased by 50.
 2. playWithASpecificPet()
 	-user will select a pet to play with
-	-when this method is called boredom is increased by 45 
-	-tiredness is decreased by 35
+	-when this method is called happiness is increased by 45 
+	-tiredness is decreased by 3
 3. cleanAllDogCages() 
 	- waste is set to 0
 4. oilAllPets() 
@@ -26,4 +26,5 @@ Methods:
 	-user will be able to admit a pet to the shelter by providing a name and description
 8. cleanLitterBox() 
 	-waste is accumulated from the Organic Cats. Calling this method will set the litter box to 0
+	-each cat's waste is decreased by 35, and their health is increased by 45
 	- if litter box is >70, cat happiness and health with decrease by 10 every loop until litter box is cleaned.

@@ -1,15 +1,13 @@
 package VirtualPets;
 
-
 import java.util.Random;
 import java.util.Scanner;
 
 public class VirtualPetShelterApp {
 	static Scanner input = new Scanner(System.in);
 	static VirtualPetShelter homelessPets = new VirtualPetShelter();
-	
 
-	public static void main(String[] args)  {
+	public static void main(String[] args) {
 
 		Random random = new Random();
 		String menuInput = null;
@@ -41,9 +39,6 @@ public class VirtualPetShelterApp {
 			menuInput = input.nextLine();
 
 			homelessPets.fillLitterBox();
-			homelessPets.tick();
-			homelessPets.reduceHealthAndHappinessLevelOfOrganicCats();
-			homelessPets.randomMessages();
 
 			if (menuInput.equals("1")) {
 				homelessPets.feedAllPets();
@@ -106,19 +101,21 @@ public class VirtualPetShelterApp {
 			} else if (menuInput.equals("9")) {
 				homelessPets.cleanAllDogCages();
 			}
-
+			homelessPets.tick();
+			homelessPets.reduceHealthAndHappinessLevelOfOrganicCats();
+			homelessPets.randomMessages();
 		} while (!menuInput.equals("10"));
 		input.close();
 		System.exit(0);
 	}
 
 	public static String checkIfPetExists(String user) {
-		
+
 		while (!homelessPets.checkIfAPetexists(user)) {
 			System.out.println("I'm sorry that pet does not exist. Re enter the pet name:");
 			user = input.nextLine();
 		}
-		
+
 		return user;
 	}
 }

@@ -35,18 +35,50 @@ public class VirtualPetShelter {
 	public void adoptAPet(String name) {
 		pets.remove(name);
 	}
+
 	public void randomMessages() {
 		for (VirtualPet pet : pets.values()) {
 			if (pet instanceof OrganicDog) {
-				if(((OrganicDog) pet).getWaste()>90) {
-					System.out.println("You have at least one dog whose cage is needs cleaning.");
+				if (((OrganicDog) pet).getWaste() > 90) {
+					System.out.println("You have at least one dog whose cage needs cleaning.");
 					break;
 				}
 			}
-			
+
 		}
-	
-		
+		for (VirtualPet pet : pets.values()) {
+			if (pet instanceof RoboticCat) {
+				if (((RoboticCat) pet).getOilLevel() < 20) {
+					System.out.println("You have at least one Robotic Pet whose oil is getting low.");
+					break;
+				}
+			} else if (pet instanceof RoboticDog) {
+				if (((RoboticDog) pet).getOilLevel() < 20) {
+					System.out.println("You have at least one Robotic Pet whose oil is getting low.");
+					break;
+				}
+			}
+		}
+		for (VirtualPet pet : pets.values()) {
+			if (pet instanceof OrganicCat) {
+				if (((OrganicCat) pet).getHunger() < 40) {
+					System.out.println("You have at least one Organic Pet who is hungry.");
+					break;
+				}
+			} else if (pet instanceof OrganicDog) {
+				if (((OrganicDog) pet).getHunger() < 40) {
+					System.out.println("You have at least one Organic Pet who is hungry.");
+					break;
+				}
+			}
+		}
+		if ((shelterLitterBox / count) >= 50 && (shelterLitterBox / count) < 75) {
+			System.out.println("Your litter box is at least half full.");
+		} else if ((shelterLitterBox / count) >= 75 && (shelterLitterBox / count) <= 85) {
+			System.out.println("Your litter box is at least 75% full.");
+		} else if ((shelterLitterBox / count) > 85) {
+			System.out.println("Your litter box is full. Please clean it.");
+		}
 	}
 
 	public void feedAllPets() {
@@ -119,13 +151,6 @@ public class VirtualPetShelter {
 				count++;
 			}
 		}
-		if ((shelterLitterBox / count) >= 50 && (shelterLitterBox / count) < 75) {
-			System.out.println("Your litter box is at least half full.");
-		} else if ((shelterLitterBox / count) >= 75 && (shelterLitterBox / count) <= 85) {
-			System.out.println("Your litter box is at least 75% full.");
-		} else if ((shelterLitterBox / count) > 85) {
-			System.out.println("Your litter box is full. Please clean it.");
-		}
 	}
 
 	public void cleanLitterBox() {
@@ -166,6 +191,7 @@ public class VirtualPetShelter {
 				((OrganicDog) pet).cleanCage();
 			}
 		}
+		System.out.println("Smells a lot better!");
 	}
 
 	public void walkAllDogs() {
@@ -175,4 +201,5 @@ public class VirtualPetShelter {
 			}
 		}
 	}
+
 }

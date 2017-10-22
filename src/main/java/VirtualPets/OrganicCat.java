@@ -23,7 +23,6 @@ public class OrganicCat extends VirtualPet implements OrganicMethods {
 		}
 	}
 
-
 	public int getHunger() {
 		return hunger;
 	}
@@ -40,9 +39,6 @@ public class OrganicCat extends VirtualPet implements OrganicMethods {
 			System.out.println("Good news! Someone adopted all of the pets in the shelter!");
 			System.exit(0);
 		}
-		if (health >= 10) {
-			health -= 10;
-		}
 		if (happiness >= 10) {
 			happiness -= 10;
 		}
@@ -50,12 +46,13 @@ public class OrganicCat extends VirtualPet implements OrganicMethods {
 			waste += 10;
 		}
 	}
+
 	public void reduceWaste() {
-		if (waste>=35) {
-		waste-=35;
+		if (waste >= 35) {
+			waste -= 35;
 		}
-		if (health<=55) {
-			health+=45;
+		if (health <= 55) {
+			health += 45;
 		}
 	}
 
