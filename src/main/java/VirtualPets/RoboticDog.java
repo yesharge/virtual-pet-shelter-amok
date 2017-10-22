@@ -25,7 +25,7 @@ public class RoboticDog extends Dog implements RoboticMethods {
 	}
 	@Override
 	public void tick() {
-		selfCare = random.nextInt(15) + 1;
+		selfCare = random.nextInt(50) + 1;
 
 		if (selfCare == 5) {
 			System.out.println("Good news! Someone adopted all of the pets in the shelter!");

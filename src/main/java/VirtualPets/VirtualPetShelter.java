@@ -9,6 +9,7 @@ public class VirtualPetShelter {
 	Scanner input = new Scanner(System.in);
 	Map<String, VirtualPet> pets = new HashMap<String, VirtualPet>();
 	private int shelterLitterBox = 0;
+	private int count = 0;
 
 	public Collection<VirtualPet> getPets() {
 		return pets.values();
@@ -33,6 +34,19 @@ public class VirtualPetShelter {
 
 	public void adoptAPet(String name) {
 		pets.remove(name);
+	}
+	public void randomMessages() {
+		for (VirtualPet pet : pets.values()) {
+			if (pet instanceof OrganicDog) {
+				if(((OrganicDog) pet).getWaste()>90) {
+					System.out.println("You have at least one dog whose cage is needs cleaning.");
+					break;
+				}
+			}
+			
+		}
+	
+		
 	}
 
 	public void feedAllPets() {
@@ -102,17 +116,33 @@ public class VirtualPetShelter {
 		for (VirtualPet pet : pets.values()) {
 			if (pet instanceof OrganicCat) {
 				shelterLitterBox += ((OrganicCat) pet).getWaste();
+				count++;
 			}
 		}
-
+		if ((shelterLitterBox / count) >= 50 && (shelterLitterBox / count) < 75) {
+			System.out.println("Your litter box is at least half full.");
+		} else if ((shelterLitterBox / count) >= 75 && (shelterLitterBox / count) <= 85) {
+			System.out.println("Your litter box is at least 75% full.");
+		} else if ((shelterLitterBox / count) > 85) {
+			System.out.println("Your litter box is full. Please clean it.");
+		}
 	}
 
 	public void cleanLitterBox() {
+		for (VirtualPet pet : pets.values()) {
+			if (pet instanceof OrganicCat) {
+				((OrganicCat) pet).reduceWaste();
+			}
+		}
 		shelterLitterBox = 0;
 	}
 
 	public int getLitterBox() {
-		return shelterLitterBox;
+
+		if (count > 0) {
+			return shelterLitterBox / count;
+		}
+		return 0;
 	}
 
 	public void reduceHealthAndHappinessLevelOfOrganicCats() {

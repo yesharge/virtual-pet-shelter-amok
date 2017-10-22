@@ -1,14 +1,15 @@
 package VirtualPets;
 
+
 import java.util.Random;
 import java.util.Scanner;
 
 public class VirtualPetShelterApp {
 	static Scanner input = new Scanner(System.in);
 	static VirtualPetShelter homelessPets = new VirtualPetShelter();
-	static String userInput;
+	
 
-	public static void main(String[] args) {
+	public static void main(String[] args)  {
 
 		Random random = new Random();
 		String menuInput = null;
@@ -39,10 +40,15 @@ public class VirtualPetShelterApp {
 					"1.\tFeed the all organic pets\n2.\tPlay with a pet\n3.\tOil all robotic pets\n4.\tWalk all dogs\n5.\tAdmit a pet\n6.\tAdopt a pet\n7.\tDisplay the Pet Status\n8.\tClean the litter Box\n9.\tClean all dog cages\n10.\tQuit");
 			menuInput = input.nextLine();
 
+			homelessPets.fillLitterBox();
+			homelessPets.tick();
+			homelessPets.reduceHealthAndHappinessLevelOfOrganicCats();
+			homelessPets.randomMessages();
+
 			if (menuInput.equals("1")) {
 				homelessPets.feedAllPets();
 				homelessPets.displayPetTitle();
-				homelessPets.tick();
+
 			} else if (menuInput.equals("2")) {
 				homelessPets.displayPetNameAndDescriptions();
 				System.out.println("Enter the name of the pet you would like to play with.");
@@ -50,14 +56,11 @@ public class VirtualPetShelterApp {
 				playWithPet = checkIfPetExists(playWithPet);
 				homelessPets.playWithASpecificPet(playWithPet);
 				System.out.println("You are playing with " + playWithPet);
-				homelessPets.tick();
 
 			} else if (menuInput.equals("3")) {
 				homelessPets.oilAllRoboticPets();
-				homelessPets.tick();
 			} else if (menuInput.equals("4")) {
 				homelessPets.walkAllDogs();
-				homelessPets.tick();
 			} else if (menuInput.equals("5")) {
 				do {
 					System.out.println("Enter the name of the pet you would like to admit:(7 Characters or less)");
@@ -85,7 +88,6 @@ public class VirtualPetShelterApp {
 					continueAdmit = input.nextLine();
 				} while (continueAdmit.equals("y"));
 				homelessPets.displayPetTitle();
-				homelessPets.tick();
 			} else if (menuInput.equals("6")) {
 				homelessPets.displayPetNameAndDescriptions();
 				do {
@@ -97,29 +99,26 @@ public class VirtualPetShelterApp {
 					removePet = input.nextLine();
 				} while (removePet.equals("y"));
 				System.out.println("Thank you for adopting a pet.");
-				homelessPets.tick();
 			} else if (menuInput.equals("7")) {
 				homelessPets.displayPetTitle();
-				homelessPets.tick();
 			} else if (menuInput.equals("8")) {
 				homelessPets.cleanLitterBox();
-				homelessPets.tick();
 			} else if (menuInput.equals("9")) {
 				homelessPets.cleanAllDogCages();
-				homelessPets.tick();
 			}
+
 		} while (!menuInput.equals("10"));
 		input.close();
 		System.exit(0);
-
 	}
 
 	public static String checkIfPetExists(String user) {
-		user = userInput;
-		while (!homelessPets.checkIfAPetexists(userInput)) {
+		
+		while (!homelessPets.checkIfAPetexists(user)) {
 			System.out.println("I'm sorry that pet does not exist. Re enter the pet name:");
-			userInput = input.nextLine();
+			user = input.nextLine();
 		}
-		return userInput;
+		
+		return user;
 	}
 }
